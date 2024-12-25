@@ -14,7 +14,7 @@ RUN chmod +x ./mvnw
 RUN ./mvnw package -Dmaven.test.skip=true
 
 # Expose the application's port
-EXPOSE 8081
+EXPOSE 8080
 
 # Set the command to run the application
 CMD ["java", "-jar", "target/admin-0.0.1-SNAPSHOT.jar"]
