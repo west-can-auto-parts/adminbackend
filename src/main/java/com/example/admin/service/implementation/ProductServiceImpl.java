@@ -3,15 +3,18 @@ package com.example.admin.service.implementation;
 import com.example.admin.dto.*;
 import com.example.admin.entity.CategoryDocument;
 import com.example.admin.entity.ProductCategoryDocument;
+import com.example.admin.entity.ProductEnquiryDocument;
 import com.example.admin.entity.SubCategoryDocument;
 import com.example.admin.repository.CategoryRepository;
 import com.example.admin.repository.ProductCategoryRepository;
+import com.example.admin.repository.ProductEnquiryRepository;
 import com.example.admin.repository.SubCategoryRepository;
 import com.example.admin.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -22,10 +25,12 @@ public class ProductServiceImpl implements ProductService {
     private SubCategoryRepository subCategoryRepository;
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private ProductEnquiryRepository productEnquiryRepository;
 
     @Override
     public String saveSubProduct (ExtraDtoResponse productRequest) {
-        SubCategoryDocument response =subCategoryRepository.findByName("Car Wash & Wax");
+        SubCategoryDocument response =subCategoryRepository.findByName("Cooling Chemicals");
         CategoryDocument categoryDocument=categoryRepository.findByName("Fluids & Lubricants");
         for(ExtraProduct pro:productRequest.getProductCategoryRequestList()) {
             ProductCategoryDocument subCat = new ProductCategoryDocument();
@@ -249,6 +254,28 @@ public class ProductServiceImpl implements ProductService {
         }
         productCategoryRepository.deleteById(id);
         return "Product category deleted successfully";
+    }
+
+    @Override
+    public List<ProductEnquiryResponse> getAllProductEnquiryForm() {
+        // Fetch all product enquiries from the repository
+        List<ProductEnquiryDocument> productEnquiries = productEnquiryRepository.findAll();
+
+        // Map each entity to the response object
+        return productEnquiries.stream()
+                .map(this::mapToProductEnquiryResponse)
+                .collect(Collectors.toList());
+    }
+
+    private ProductEnquiryResponse mapToProductEnquiryResponse(ProductEnquiryDocument enquiry) {
+        ProductEnquiryResponse response = new ProductEnquiryResponse();
+        response.setId(enquiry.getId());
+        response.setName(enquiry.getName());
+        response.setEmail(enquiry.getEmail());
+        response.setStore(enquiry.getStore());
+        response.setProductName(enquiry.getProductName());
+        response.setMessage(enquiry.getMessage());
+        return response;
     }
 
 

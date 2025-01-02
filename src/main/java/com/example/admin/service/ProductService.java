@@ -23,5 +23,6 @@ public interface ProductService {
     public String editProductCategory(ProductCategoryRequest productCategoryRequest,String id);
     public ProductCategoryResponse getProductCategoryById(String id);
     public String deleteProductCategory(String id);
+    public List<ProductEnquiryResponse> getAllProductEnquiryForm();
 
 }

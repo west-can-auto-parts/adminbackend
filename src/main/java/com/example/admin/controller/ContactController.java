@@ -1,6 +1,7 @@
 package com.example.admin.controller;
 
 import com.example.admin.dto.ContactResponse;
+import com.example.admin.dto.SubscribeResponse;
 import com.example.admin.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -29,6 +30,19 @@ public class ContactController {
     @GetMapping("/download-contacts")
     public ResponseEntity<byte[]> downloadContactsExcel() {
         byte[] excelData=contactService.downloadExcelSheet();
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=contacts.xlsx")
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(excelData);
+    }
+    @GetMapping("/subscribe")
+    public ResponseEntity<List<SubscribeResponse>> fetchAllSubscribe(){
+        List<SubscribeResponse> responses=contactService.getAllSubscribe();
+        return ResponseEntity.ok().body(responses);
+    }
+    @GetMapping("/download-subscribers")
+    public ResponseEntity<byte[]> downloadSubscribeExcel() {
+        byte[] excelData=contactService.downloadSubscribe();
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=contacts.xlsx")
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)

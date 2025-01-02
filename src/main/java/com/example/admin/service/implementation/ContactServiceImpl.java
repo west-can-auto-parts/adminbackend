@@ -1,8 +1,12 @@
 package com.example.admin.service.implementation;
 
 import com.example.admin.dto.ContactResponse;
+import com.example.admin.dto.SubscribeResponse;
 import com.example.admin.entity.ContactDocument;
+import com.example.admin.entity.SubCategoryDocument;
+import com.example.admin.entity.SubscribeDocument;
 import com.example.admin.repository.ContactRepository;
+import com.example.admin.repository.SubscribeRepository;
 import com.example.admin.service.ContactService;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -22,6 +26,9 @@ public class ContactServiceImpl implements ContactService {
 
     @Autowired
     private ContactRepository contactRepository;
+
+    @Autowired
+    private SubscribeRepository subscribeRepository;
 
     @Override
     public List<ContactResponse> getAllContact () {
@@ -90,6 +97,68 @@ public class ContactServiceImpl implements ContactService {
             sheet.autoSizeColumn(i);
         }
 
+        // Write the workbook to a byte array
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        try {
+            workbook.write(outputStream);
+            workbook.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        byte[] excelData = outputStream.toByteArray();
+        return excelData;
+    }
+
+    @Override
+    public List<SubscribeResponse> getAllSubscribe () {
+        List<SubscribeDocument> subscribeDocumentList= subscribeRepository.findAll();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        List<SubscribeResponse> subscribeResponsesList=new ArrayList<>();
+        for(SubscribeDocument sub:subscribeDocumentList){
+            SubscribeResponse subscribeResponse=new SubscribeResponse();
+            subscribeResponse.setId(sub.getId());
+            subscribeResponse.setEmail(sub.getEmail());
+            LocalDate createdDate = sub.getSubscribedAt().toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+            subscribeResponse.setSubscribedAt(createdDate.format(dateFormatter));
+            subscribeResponsesList.add(subscribeResponse);
+        }
+        return subscribeResponsesList;
+    }
+
+    @Override
+    public byte[] downloadSubscribe () {
+        List<SubscribeDocument> subscribeDocumentList = subscribeRepository.findAll();
+        // Create the Excel workbook
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Subscribe");
+
+        // Create the header row
+        Row headerRow = sheet.createRow(0);
+        String[] headers = { "Email","SubscribedAt"};
+        for (int i = 0; i < headers.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(headers[i]);
+            CellStyle style = workbook.createCellStyle();
+            Font font = workbook.createFont();
+            font.setBold(true);
+            style.setFont(font);
+            cell.setCellStyle(style);
+        }
+
+        // Populate the data rows
+        int rowIdx = 1;
+        for (SubscribeDocument sub : subscribeDocumentList) {
+            Row row = sheet.createRow(rowIdx++);
+            row.createCell(0).setCellValue(sub.getEmail());
+            row.createCell(1).setCellValue(sub.getSubscribedAt());
+        }
+        // Autosize columns
+        for (int i = 0; i < headers.length; i++) {
+            sheet.autoSizeColumn(i);
+        }
         // Write the workbook to a byte array
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try {

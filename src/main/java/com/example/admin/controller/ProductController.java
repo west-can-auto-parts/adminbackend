@@ -98,4 +98,11 @@ public class ProductController {
         String responses =productService.deleteProductCategory(id);
         return ResponseEntity.ok().body(responses);
     }
+
+    @GetMapping("/product-enquiry-form")
+    public ResponseEntity<List<ProductEnquiryResponse>> fetchAllProductEnquiryForm(){
+        List<ProductEnquiryResponse> responses=productService.getAllProductEnquiryForm();
+        return ResponseEntity.ok().body(responses);
+    }
+
 }

@@ -11,7 +11,7 @@ public class ContactDocument {
     private String id;
     private String firstName;
     private String lastName;
-    private String companyName;
+    private String company;
     private String email;
     private String phoneNumber;
     private String message;
@@ -43,11 +43,11 @@ public class ContactDocument {
     }
 
     public String getCompanyName () {
-        return companyName;
+        return company;
     }
 
     public void setCompanyName (String companyName) {
-        this.companyName = companyName;
+        this.company = company;
     }
 
     public String getEmail () {
