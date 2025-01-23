@@ -40,7 +40,7 @@ public class ContactServiceImpl implements ContactService {
             response.setId(contactDocument.getId());
             response.setFirstName(contactDocument.getFirstName());
             response.setLastName(contactDocument.getLastName());
-            response.setCompanyName("West Can Auto Parts");
+            response.setCompanyName(contactDocument.getCompanyName());
             response.setEmail(contactDocument.getEmail());
             response.setPhoneNumber(contactDocument.getPhoneNumber());
             response.setMessage(contactDocument.getMessage());
