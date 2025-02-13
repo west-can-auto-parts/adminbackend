@@ -207,9 +207,10 @@ public class ProductServiceImpl implements ProductService {
         document.setSubCategoryId(productCategoryRequest.getSubCategoryId());
         document.setFeatured(productCategoryRequest.isFeatured());
         document.setBestSeller(productCategoryRequest.isBestSeller());
-
+        document.setProductPosition(productCategoryRequest.getProductPosition());
+        document.setBrandAndPosition(productCategoryRequest.getBrandAndPosition());
         productCategoryRepository.save(document);
-        return "Data Save Successfully";
+        return "Product Category saved successfully with ID: " + document.getId();
     }
 
     @Override
@@ -224,6 +225,8 @@ public class ProductServiceImpl implements ProductService {
         document.setSubCategoryId(productCategoryRequest.getSubCategoryId());
         document.setFeatured(productCategoryRequest.isFeatured());
         document.setBestSeller(productCategoryRequest.isBestSeller());
+        document.setProductPosition(productCategoryRequest.getProductPosition());
+        document.setBrandAndPosition(productCategoryRequest.getBrandAndPosition());
         productCategoryRepository.save(document);
 
         return "Data edit successfully";
@@ -244,6 +247,8 @@ public class ProductServiceImpl implements ProductService {
         response.setSubCategoryName(mp2.get(document.getSubCategoryId()));
         response.setFeatured(document.isFeatured());
         response.setBestSeller(document.isBestSeller());
+        response.setBrandAndPosition(document.getBrandAndPosition());
+        response.setProductPosition(document.getProductPosition());
         return response;
     }
 
