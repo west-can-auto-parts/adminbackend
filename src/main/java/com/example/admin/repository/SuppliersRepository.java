@@ -10,4 +10,7 @@ public interface SuppliersRepository extends MongoRepository<SuppliersDocument,S
 
     @Query("{ 'name': { '$regex': ?0, '$options': 'i' } }")
     SuppliersDocument findByName (String name);
+
+    @Query("{ '_id': ?0}")
+    SuppliersDocument getById (String id);
 }

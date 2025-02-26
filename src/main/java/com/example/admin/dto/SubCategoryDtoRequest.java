@@ -1,6 +1,7 @@
 package com.example.admin.dto;
 
 import java.util.List;
+import java.util.Map;
 
 public class SubCategoryDtoRequest {
     private String name;
@@ -10,6 +11,7 @@ public class SubCategoryDtoRequest {
     private List<String> tags;
     private boolean featured;
     private boolean bestSeller;
+    private Map<String,Integer> productCategoryAndPosition;
 
     public String getName () {
         return name;
@@ -65,5 +67,13 @@ public class SubCategoryDtoRequest {
 
     public void setBestSeller (boolean bestSeller) {
         this.bestSeller = bestSeller;
+    }
+
+    public Map<String, Integer> getProductCategoryAndPosition () {
+        return productCategoryAndPosition;
+    }
+
+    public void setProductCategoryAndPosition (Map<String, Integer> productCategoryAndPosition) {
+        this.productCategoryAndPosition = productCategoryAndPosition;
     }
 }

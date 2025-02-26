@@ -1,14 +1,26 @@
 package com.example.admin.dto;
 
 import java.util.List;
+import java.util.Map;
 
 public class SuppliersResponse {
     private String id;
     private String name;
-    private String logoUrl;
+    private String description;
+    private String imageUrl;
     private List<String> category;
-    private List<String> subcategory;
+    private Map<String,Integer> subCategoryAndPosition;
     private List<String> productCategory;
+
+    public SuppliersResponse(String id, String name, String description, String imageUrl, List<String> category, Map<String, Integer> subCategoryAndPosition, List<String> productCategory) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.category = category;
+        this.subCategoryAndPosition = subCategoryAndPosition;
+        this.productCategory = productCategory;
+    }
 
     public String getId () {
         return id;
@@ -26,12 +38,20 @@ public class SuppliersResponse {
         this.name = name;
     }
 
-    public String getLogoUrl () {
-        return logoUrl;
+    public String getDescription () {
+        return description;
     }
 
-    public void setLogoUrl (String logoUrl) {
-        this.logoUrl = logoUrl;
+    public void setDescription (String description) {
+        this.description = description;
+    }
+
+    public String getImageUrl () {
+        return imageUrl;
+    }
+
+    public void setImageUrl (String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public List<String> getCategory () {
@@ -42,12 +62,12 @@ public class SuppliersResponse {
         this.category = category;
     }
 
-    public List<String> getSubcategory () {
-        return subcategory;
+    public Map<String, Integer> getSubCategoryAndPosition () {
+        return subCategoryAndPosition;
     }
 
-    public void setSubcategory (List<String> subcategory) {
-        this.subcategory = subcategory;
+    public void setSubCategoryAndPosition (Map<String, Integer> subCategoryAndPosition) {
+        this.subCategoryAndPosition = subCategoryAndPosition;
     }
 
     public List<String> getProductCategory () {
@@ -57,12 +77,17 @@ public class SuppliersResponse {
     public void setProductCategory (List<String> productCategory) {
         this.productCategory = productCategory;
     }
-    public SuppliersResponse(String id, String name, List<String> category, List<String> subcategory, List<String> productCategory, String logoUrl) {
+
+    public SuppliersResponse(String id, String name,String description ,String logoUrl) {
         this.id = id;
         this.name = name;
-        this.category = category;
-        this.subcategory = subcategory;
-        this.productCategory = productCategory;
-        this.logoUrl = logoUrl;
+        this.description=description;
+//        this.category = category;
+//        this.subcategory = subcategory;
+//        this.productCategory = productCategory;
+        this.imageUrl = logoUrl;
+    }
+    public SuppliersResponse(){
+
     }
 }

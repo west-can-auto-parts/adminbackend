@@ -13,7 +13,6 @@ public class ProductCategoryRequest {
     private String subCategoryId;
     private boolean featured;
     private boolean bestSeller;
-    private Integer productPosition;
     private Map<String,Integer> brandAndPosition;
 
     public ProductCategoryRequest (List<String> imageUrl) {
@@ -90,14 +89,6 @@ public class ProductCategoryRequest {
 
     public void setImageUrl (List<String> imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public Integer getProductPosition () {
-        return productPosition;
-    }
-
-    public void setProductPosition (Integer productPosition) {
-        this.productPosition = productPosition;
     }
 
     public Map<String, Integer> getBrandAndPosition () {

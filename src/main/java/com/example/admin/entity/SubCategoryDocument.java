@@ -5,6 +5,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 @Document(collection = "SubCategory")
@@ -17,6 +18,7 @@ public class SubCategoryDocument {
     private List<String> tags;
     private boolean featured;
     private boolean bestSeller;
+    private Map<String,Integer> productCategoryAndPosition;
 
     public String getId () {
         return id;
@@ -80,5 +82,13 @@ public class SubCategoryDocument {
 
     public void setBestSeller (boolean bestSeller) {
         this.bestSeller = bestSeller;
+    }
+
+    public Map<String, Integer> getProductCategoryAndPosition () {
+        return productCategoryAndPosition;
+    }
+
+    public void setProductCategoryAndPosition (Map<String, Integer> productCategoryAndPosition) {
+        this.productCategoryAndPosition = productCategoryAndPosition;
     }
 }

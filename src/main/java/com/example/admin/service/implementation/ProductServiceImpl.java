@@ -119,6 +119,7 @@ public class ProductServiceImpl implements ProductService {
         subCategoryDocument.setTags(subCategoryDtoRequest.getTags());
         subCategoryDocument.setFeatured(subCategoryDocument.isFeatured());
         subCategoryDocument.setBestSeller(subCategoryDtoRequest.isBestSeller());
+        subCategoryDocument.setProductCategoryAndPosition(subCategoryDtoRequest.getProductCategoryAndPosition());
         subCategoryRepository.save(subCategoryDocument);
         return "SubCategory data save successfully";
     }
@@ -134,6 +135,7 @@ public class ProductServiceImpl implements ProductService {
             subCat.setTags(subCategoryDtoRequest.getTags());
             subCat.setFeatured(subCategoryDtoRequest.isFeatured());
             subCat.setBestSeller(subCategoryDtoRequest.isBestSeller());
+            subCat.setProductCategoryAndPosition(subCategoryDtoRequest.getProductCategoryAndPosition());
             subCategoryRepository.save(subCat);
             return "Data edit successfully";
 
@@ -158,6 +160,7 @@ public class ProductServiceImpl implements ProductService {
             subCat.setTags(sub.getTags());
             subCat.setFeatured(sub.isFeatured());
             subCat.setBestSeller(sub.isBestSeller());
+            subCat.setProductCategoryAndPosition(sub.getProductCategoryAndPosition());
             return subCat;
         }
         return null;
@@ -207,7 +210,6 @@ public class ProductServiceImpl implements ProductService {
         document.setSubCategoryId(productCategoryRequest.getSubCategoryId());
         document.setFeatured(productCategoryRequest.isFeatured());
         document.setBestSeller(productCategoryRequest.isBestSeller());
-        document.setProductPosition(productCategoryRequest.getProductPosition());
         document.setBrandAndPosition(productCategoryRequest.getBrandAndPosition());
         productCategoryRepository.save(document);
         return "Product Category saved successfully with ID: " + document.getId();
@@ -225,7 +227,6 @@ public class ProductServiceImpl implements ProductService {
         document.setSubCategoryId(productCategoryRequest.getSubCategoryId());
         document.setFeatured(productCategoryRequest.isFeatured());
         document.setBestSeller(productCategoryRequest.isBestSeller());
-        document.setProductPosition(productCategoryRequest.getProductPosition());
         document.setBrandAndPosition(productCategoryRequest.getBrandAndPosition());
         productCategoryRepository.save(document);
 
@@ -248,7 +249,6 @@ public class ProductServiceImpl implements ProductService {
         response.setFeatured(document.isFeatured());
         response.setBestSeller(document.isBestSeller());
         response.setBrandAndPosition(document.getBrandAndPosition());
-        response.setProductPosition(document.getProductPosition());
         return response;
     }
 

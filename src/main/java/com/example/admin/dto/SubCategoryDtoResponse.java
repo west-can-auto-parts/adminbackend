@@ -3,6 +3,7 @@ package com.example.admin.dto;
 import org.bson.types.ObjectId;
 
 import java.util.List;
+import java.util.Map;
 
 public class SubCategoryDtoResponse {
     private String id;
@@ -13,6 +14,7 @@ public class SubCategoryDtoResponse {
     private List<String> tags;
     private boolean featured;
     private boolean bestSeller;
+    private Map<String,Integer> productCategoryAndPosition;
 
     public String getId () {
         return id;
@@ -76,5 +78,13 @@ public class SubCategoryDtoResponse {
 
     public void setBestSeller (boolean bestSeller) {
         this.bestSeller = bestSeller;
+    }
+
+    public Map<String, Integer> getProductCategoryAndPosition () {
+        return productCategoryAndPosition;
+    }
+
+    public void setProductCategoryAndPosition (Map<String, Integer> productCategoryAndPosition) {
+        this.productCategoryAndPosition = productCategoryAndPosition;
     }
 }

@@ -19,7 +19,6 @@ public class ProductCategoryDocument {
     private List<String> tags;
     private boolean featured;
     private boolean bestSeller;
-    private Integer productPosition;
     private Map<String,Integer> brandAndPosition;
 
     public String getId () {
@@ -92,14 +91,6 @@ public class ProductCategoryDocument {
 
     public void setBestSeller (boolean bestSeller) {
         this.bestSeller = bestSeller;
-    }
-
-    public Integer getProductPosition () {
-        return productPosition;
-    }
-
-    public void setProductPosition (Integer productPosition) {
-        this.productPosition = productPosition;
     }
 
     public Map<String, Integer> getBrandAndPosition () {

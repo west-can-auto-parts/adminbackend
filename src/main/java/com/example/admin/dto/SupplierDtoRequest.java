@@ -1,29 +1,16 @@
-package com.example.admin.entity;
-
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.example.admin.dto;
 
 import java.util.List;
 import java.util.Map;
 
-@Document(collection = "TempSuppliers")
-public class SuppliersDocument {
+public class SupplierDtoRequest {
     private String id;
     private String name;
-    private String imageUrl;
     private String description;
-    private List<String> category;
+    private String imageUrl;
+    private List<String> Category;
     private Map<String,Integer> subCategoryAndPosition;
     private List<String> productCategory;
-
-    public SuppliersDocument(String id, String name, String description, String imageUrl, List<String> category, Map<String, Integer> subCategoryAndPosition, List<String> productCategory) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.imageUrl = imageUrl;
-        this.category = category;
-        this.subCategoryAndPosition = subCategoryAndPosition;
-        this.productCategory = productCategory;
-    }
 
     public String getId () {
         return id;
@@ -41,14 +28,6 @@ public class SuppliersDocument {
         this.name = name;
     }
 
-    public String getImageUrl () {
-        return imageUrl;
-    }
-
-    public void setImageUrl (String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public String getDescription () {
         return description;
     }
@@ -57,12 +36,20 @@ public class SuppliersDocument {
         this.description = description;
     }
 
+    public String getImageUrl () {
+        return imageUrl;
+    }
+
+    public void setImageUrl (String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public List<String> getCategory () {
-        return category;
+        return Category;
     }
 
     public void setCategory (List<String> category) {
-        this.category = category;
+        Category = category;
     }
 
     public Map<String, Integer> getSubCategoryAndPosition () {
