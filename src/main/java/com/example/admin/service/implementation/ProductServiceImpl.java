@@ -119,7 +119,7 @@ public class ProductServiceImpl implements ProductService {
         subCategoryDocument.setTags(subCategoryDtoRequest.getTags());
         subCategoryDocument.setFeatured(subCategoryDocument.isFeatured());
         subCategoryDocument.setBestSeller(subCategoryDtoRequest.isBestSeller());
-        subCategoryDocument.setProductCategoryAndPosition(subCategoryDtoRequest.getProductCategoryAndPosition());
+        subCategoryDocument.setProductCategoryAndPosition(subCategoryDtoRequest.getProductCategoryPositions());
         subCategoryRepository.save(subCategoryDocument);
         return "SubCategory data save successfully";
     }
@@ -135,7 +135,7 @@ public class ProductServiceImpl implements ProductService {
             subCat.setTags(subCategoryDtoRequest.getTags());
             subCat.setFeatured(subCategoryDtoRequest.isFeatured());
             subCat.setBestSeller(subCategoryDtoRequest.isBestSeller());
-            subCat.setProductCategoryAndPosition(subCategoryDtoRequest.getProductCategoryAndPosition());
+            subCat.setProductCategoryAndPosition(subCategoryDtoRequest.getProductCategoryPositions());
             subCategoryRepository.save(subCat);
             return "Data edit successfully";
 

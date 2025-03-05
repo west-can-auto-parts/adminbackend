@@ -11,7 +11,7 @@ public class SubCategoryDtoRequest {
     private List<String> tags;
     private boolean featured;
     private boolean bestSeller;
-    private Map<String,Integer> productCategoryAndPosition;
+    private Map<String,Integer> productCategoryPositions;
 
     public String getName () {
         return name;
@@ -69,11 +69,11 @@ public class SubCategoryDtoRequest {
         this.bestSeller = bestSeller;
     }
 
-    public Map<String, Integer> getProductCategoryAndPosition () {
-        return productCategoryAndPosition;
+    public Map<String, Integer> getProductCategoryPositions () {
+        return productCategoryPositions;
     }
 
-    public void setProductCategoryAndPosition (Map<String, Integer> productCategoryAndPosition) {
-        this.productCategoryAndPosition = productCategoryAndPosition;
+    public void setProductCategoryPositions (Map<String, Integer> productCategoryPositions) {
+        this.productCategoryPositions = productCategoryPositions;
     }
 }
