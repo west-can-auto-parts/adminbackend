@@ -16,7 +16,9 @@ public class ProductCategoryResponse {
     private String subCategoryName;
     private boolean featured;
     private boolean bestSeller;
+    private int bestSellerPosition;
     private Map<String,Integer> brandAndPosition;
+
 
     public String getId () {
         return id;
@@ -96,5 +98,13 @@ public class ProductCategoryResponse {
 
     public void setBrandAndPosition (Map<String, Integer> brandAndPosition) {
         this.brandAndPosition = brandAndPosition;
+    }
+
+    public int getBestSellerPosition() {
+        return bestSellerPosition;
+    }
+
+    public void setBestSellerPosition(int bestSellerPosition) {
+        this.bestSellerPosition = bestSellerPosition;
     }
 }

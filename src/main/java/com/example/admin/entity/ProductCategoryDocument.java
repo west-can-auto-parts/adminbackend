@@ -19,6 +19,7 @@ public class ProductCategoryDocument {
     private List<String> tags;
     private boolean featured;
     private boolean bestSeller;
+    private int bestSellerPosition;
     private Map<String,Integer> brandAndPosition;
 
     public String getId () {
@@ -99,5 +100,13 @@ public class ProductCategoryDocument {
 
     public void setBrandAndPosition (Map<String, Integer> brandAndPosition) {
         this.brandAndPosition = brandAndPosition;
+    }
+
+    public int getBestSellerPosition() {
+        return bestSellerPosition;
+    }
+
+    public void setBestSellerPosition(int bestSellerPosition) {
+        this.bestSellerPosition = bestSellerPosition;
     }
 }

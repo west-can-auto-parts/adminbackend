@@ -13,6 +13,7 @@ public class ProductCategoryRequest {
     private String subCategoryId;
     private boolean featured;
     private boolean bestSeller;
+    private int bestSellerPosition;
     private Map<String,Integer> brandAndPosition;
 
     public ProductCategoryRequest (List<String> imageUrl) {
@@ -97,5 +98,13 @@ public class ProductCategoryRequest {
 
     public void setBrandAndPosition (Map<String, Integer> brandAndPosition) {
         this.brandAndPosition = brandAndPosition;
+    }
+
+    public int getBestSellerPosition() {
+        return bestSellerPosition;
+    }
+
+    public void setBestSellerPosition(int bestSellerPosition) {
+        this.bestSellerPosition = bestSellerPosition;
     }
 }
